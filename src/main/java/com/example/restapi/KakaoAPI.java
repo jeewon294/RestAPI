@@ -22,7 +22,7 @@ public class KakaoAPI {
         try{
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestProperty("X-HTTP-Methode-Override", "PATCH");
+//            conn.setRequestProperty("X-HTTP-Methode-Override", "PATCH");
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
 
@@ -69,7 +69,7 @@ public class KakaoAPI {
         try{
             URL url = new URL(reqUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestProperty("X-HTTP-Methode-Override", "PATCH");
+//            conn.setRequestProperty("X-HTTP-Methode-Override", "PATCH");
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Authorization", "Bearer" + accessToken);
             int responseCode = conn.getResponseCode();

@@ -5,13 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>kakao sign up</h1>
-    <span th:if=${user Id == null}>
+    <h1>sign up</h1>
+    <span th:if=${userId==null}>
         <a href="kauth.kakao.com/oauth/authorize?client_id=8906cd673a9b7d744a323958cde2df99&redirect_uri=http://localhost:7071/login&response_type=code">
             <img src="img/kakao_login_medium_narrow.png">
         </a>
     </span>
-    <span th:if="${user Id == null}">
+    <span th:if="${userId==null}">
         <form name="logout" action="http://localhost:7071/logout">
             <input type="submit" value="로그아웃"></input>
 
