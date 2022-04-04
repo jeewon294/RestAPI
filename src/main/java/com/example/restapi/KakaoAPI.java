@@ -17,7 +17,7 @@ public class KakaoAPI {
     public String getAccessToken(String code) {
         String accessToken = "";
         String refreshToken = "";
-        String reqURL = "https://kapi.kakao.com/oauth/token";
+        String reqURL = "https://kauth.kakao.com/oauth/token";
 
         try{
             URL url = new URL(reqURL);
@@ -28,7 +28,7 @@ public class KakaoAPI {
 
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
-            sb.append("authorization_code");
+            sb.append("grant_type=authorization_code");
             sb.append("&client_id=4e8ff1533b718373bdb59c95efdb9c0d");
             sb.append("&redirect_uri=http://localhost:7071/login");
             sb.append("&code=" + code);
@@ -52,7 +52,7 @@ public class KakaoAPI {
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
 
-            accessToken = element.getAsJsonObject().get("accessToken").getAsString();
+            accessToken = element.getAsJsonObject().get("access_token").getAsString();
             refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
 
             br.close();
@@ -71,7 +71,7 @@ public class KakaoAPI {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 //            conn.setRequestProperty("X-HTTP-Methode-Override", "PATCH");
             conn.setRequestMethod("POST");
-            conn.setRequestProperty("Authorization", "Bearer" + accessToken);
+            conn.setRequestProperty("Authorization", "Bearer " + accessToken);
             int responseCode = conn.getResponseCode();
             System.out.println("responseCode" + responseCode);
 
@@ -110,7 +110,7 @@ public class KakaoAPI {
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
-            conn.setRequestProperty("Authorization","Bearer" + accessToken);
+            conn.setRequestProperty("Authorization","Bearer " + accessToken);
             int responseCode = conn.getResponseCode();
             System.out.println("responseCode=" + responseCode);
 
