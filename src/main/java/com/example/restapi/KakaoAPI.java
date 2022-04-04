@@ -52,7 +52,7 @@ public class KakaoAPI {
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
 
-            accessToken = element.getAsJsonObject().get("access_token").getAsString();
+            accessToken = element.getAsJsonObject().get("accessToken").getAsString();
             refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
 
             br.close();
@@ -105,7 +105,7 @@ public class KakaoAPI {
 
 
     public void kakaoLogout(String accessToken) {
-        String reqURL = "kapi.kakao.com/v1/user/logout";
+        String reqURL = "https://kapi.kakao.com/v1/user/logout";
         try{
             URL url = new URL(reqURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
